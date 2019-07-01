@@ -42,7 +42,7 @@ module.exports = {
           ...event._doc,
           _id: event._doc._id.toString(),
           date: new Date(event._doc.date).toISOString(),
-          creator: user.bind(this, event._doc.creator)
+          creator: user.bind(this, event._doc.creator) // binds and invokes user function from up above
         };
       });
     } catch (err) {
@@ -61,7 +61,7 @@ module.exports = {
       title: args.eventInput.title,
       description: args.eventInput.description,
       price: +args.eventInput.price,
-      date: new Date(args.eventInput.date),
+      date: new Date(args.eventInput.date), // creates a new date obj
       creator: "IDSTRINGHERE"
     });
     let createdEvent;
@@ -72,7 +72,7 @@ module.exports = {
           ...result._doc,
           _id: result._doc._id.toString(),
           date: new Date(event._doc.date).toISOString(),
-          creator: user.bind(this, result._doc.creator)
+          creator: user.bind(this, result._doc.creator) // binds and invokes events function from up above
         };
         console.log(result);
         const creator = await User.findById("IDSTRINGHERE");
