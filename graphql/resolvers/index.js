@@ -3,6 +3,7 @@ const { buildSchema } = require("graphql");
 
 const Event = require("../../models/event");
 const User = require("../../models/user");
+const Booking = require('../../models/booking');
 
 const events = async eventIds => {
   try {
@@ -48,6 +49,9 @@ module.exports = {
     } catch (err) {
       throw err;
     }
+  },
+  bookings: async () => {
+      
   },
   createEvent: async (args) => {
     // const event = {
