@@ -4,6 +4,7 @@ const graphqlHttp = require("express-graphql");
 const mongoose = require('mongoose')
 const graphQlSchema = require('./graphql/schema/index')
 const graphQlResolvers = require('./graphql/resolvers/index')
+const isAuth = require('./middleware/is-auth')
 
 
 const app = express();
@@ -11,6 +12,8 @@ const app = express();
 const events = []
 
 app.use(express.json());
+
+app.use(isAuth)
 
 
 app.use(
