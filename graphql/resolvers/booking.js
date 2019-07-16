@@ -2,25 +2,7 @@ const Booking = require('../../models/booking');
 const { transformBooking, transformEvent } = require('./merge')
 const Event = require('../../models/event')
 
-const transformEvent = (event) => {
-    return {
-        ...event._doc,
-        _id: event.id,
-        date: dateToString(event._doc.date),
-        creator: user.bind(this, event.creator) // binds and invokes user function from below
-    }
-}
 
-const transformBooking = (booking) => {
-    return { 
-        ...bookings._doc, 
-        _id: booking.id, 
-        user: user.bind(this, booking._doc.user),
-        event: singleEvent.bind(this, booking._doc.event),
-        createdAt: dateToString(booking._doc.createAt),
-        updatedAt: dateToString(booking._doc.updatedAt)
-    }
-}
 
 const events = async eventIds => {
   try {
@@ -69,7 +51,7 @@ module.exports = {
         return bookings.map(booking => {
             return transformBooking(result)
         })
-      } catch (){
+      } catch (err){
           throw err;
       }
   },
