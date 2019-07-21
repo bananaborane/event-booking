@@ -14,6 +14,9 @@ class EventsPage extends Component {
 
     constructor(props){
         super(props)
+
+        // react references api used below
+
         this.titleElRef = React.createRef();
         this.priceElRef = React.createRef();
         this.dateElRef = React.createRef();
@@ -80,7 +83,7 @@ class EventsPage extends Component {
             return res.json();
         })
         .then(resData => {
-            this.fetchEvents();
+            this.fetchEvents(); // rerenders the list of events after submitting a new event
         })
         .catch(err => {
             console.log(err);
