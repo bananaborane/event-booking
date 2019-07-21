@@ -19,6 +19,12 @@ body {
   display: block;
 }
 
+.form-control textarea {
+  width: 100%;
+  display: block;
+}
+
+
 .form-control {
   margin-bottom: 1rem;
 }
