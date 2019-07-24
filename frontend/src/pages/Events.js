@@ -144,7 +144,7 @@ class EventsPage extends Component {
   render() {
     const eventList = this.state.events.map(event => {
         return <li key={event._id} className='events__list-item'>{event.title}</li>
-    })
+    }) 
 
     return (
       <React.Fragment>
