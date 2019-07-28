@@ -4,6 +4,7 @@
     border: 1px solid #5101d1;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 .events__list-item h1 {
