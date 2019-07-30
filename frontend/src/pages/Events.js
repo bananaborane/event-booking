@@ -4,13 +4,15 @@ import Modal from '../components/Modal/Modal'
 import Backdrop from '../components/Backdrop/Backdrop'
 import EventList from './../components/Events/EventList/EventList'
 import AuthContext from '../context/auth-context'
+import Spinner from '../components/Spinner/Spinner'
 
 import "./Events.css";
 
 class EventsPage extends Component {
     state = {
         creating: false,
-        events: []
+        events: [],
+        isLoading: false
     }
 
     constructor(props){
@@ -140,12 +142,16 @@ class EventsPage extends Component {
         .then(resData => {
             const events = resData.data.events;
             this.setState({
-                events: events
+                events: events,
+                isLoading: false
             })
 
         })
         .catch(err => {
             console.log(err);
+            this.setState({
+                isLoading: false
+            })
         } ); // fetch api takes a second argument (an object) to configure the request
     }
 
@@ -184,7 +190,7 @@ class EventsPage extends Component {
             <ul className='events__list'>
                 {eventList}
             </ul>
-            <EventList events={this.state.events} authUserId={this.context.userId} />
+            { this.state.isLoading ? (<Spinner />) : (<EventList events={this.state.events} authUserId={this.context.userId} />) }
       </React.Fragment>
       
     );
