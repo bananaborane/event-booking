@@ -47,4 +47,6 @@ class App extends Component {
   }
 }
 
+// useless comment
+
 export default App;
